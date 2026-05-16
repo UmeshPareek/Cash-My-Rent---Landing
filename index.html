@@ -58,40 +58,40 @@ nav{
 .orb-2{width:400px;height:400px;background:radial-gradient(circle,rgba(13,148,136,.08) 0%,transparent 70%);bottom:0;left:10%;animation-delay:-5s}
 @keyframes drift{0%,100%{transform:translate(0,0)}50%{transform:translate(-30px,20px)}}
 
-.hero-content{position:relative;z-index:1;max-width:1200px}
+.hero-content{position:relative;z-index:2;max-width:1200px}
 .hero-tag{
   display:inline-flex;align-items:center;gap:8px;
   font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--teal);margin-bottom:32px;
+  color:rgba(255,255,255,.6);margin-bottom:32px;
 }
-.hero-tag-line{width:24px;height:1px;background:var(--teal)}
+.hero-tag-line{width:24px;height:1px;background:rgba(255,255,255,.4)}
 .hero-h1{
   font-family:var(--serif);
   font-size:clamp(52px,7vw,96px);
   font-weight:400;line-height:.97;
   letter-spacing:-.03em;
-  color:var(--ink);
+  color:#fff;
   margin-bottom:40px;
   max-width:860px;
 }
-.hero-h1 em{font-style:italic;color:var(--teal)}
+.hero-h1 em{font-style:italic;color:#5ECFCB}
 .hero-bottom{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;flex-wrap:wrap}
-.hero-sub{font-size:17px;color:var(--ink-2);font-weight:300;line-height:1.6;max-width:400px}
+.hero-sub{font-size:17px;color:rgba(255,255,255,.65);font-weight:300;line-height:1.6;max-width:400px}
 .hero-actions{display:flex;align-items:center;gap:16px;flex-shrink:0}
 .btn-primary-lg{
-  padding:14px 32px;background:var(--ink);color:#fff;
+  padding:14px 32px;background:#fff;color:var(--ink);
   font-size:14px;font-weight:500;border-radius:100px;
   text-decoration:none;transition:all .25s;letter-spacing:.01em;
   display:inline-flex;align-items:center;gap:8px;
 }
-.btn-primary-lg:hover{background:var(--teal);transform:translateY(-1px)}
-.btn-text{font-size:14px;color:var(--ink-2);text-decoration:none;font-weight:400;transition:color .15s}
-.btn-text:hover{color:var(--ink)}
-.hero-scroll{position:absolute;right:48px;bottom:64px;z-index:1;display:flex;flex-direction:column;align-items:center;gap:8px}
-.scroll-line{width:1px;height:48px;background:var(--line);position:relative;overflow:hidden}
+.btn-primary-lg:hover{background:var(--teal);color:#fff;transform:translateY(-1px)}
+.btn-text{font-size:14px;color:rgba(255,255,255,.6);text-decoration:none;font-weight:400;transition:color .15s}
+.btn-text:hover{color:#fff}
+.hero-scroll{position:absolute;right:48px;bottom:64px;z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px}
+.scroll-line{width:1px;height:48px;background:rgba(255,255,255,.15);position:relative;overflow:hidden}
 .scroll-line::after{content:'';position:absolute;top:-100%;left:0;width:100%;height:100%;background:var(--teal);animation:scrollDown 1.8s ease infinite}
 @keyframes scrollDown{0%{top:-100%}100%{top:100%}}
-.scroll-label{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);writing-mode:vertical-rl}
+.scroll-label{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);writing-mode:vertical-rl}
 
 /* ── MARQUEE ── */
 .marquee-wrap{background:var(--ink);padding:16px 0;overflow:hidden;white-space:nowrap}
@@ -295,8 +295,17 @@ footer{padding:32px 48px;border-top:1px solid rgba(255,255,255,.08);background:v
 <!-- HERO -->
 <section class="hero">
   <div class="hero-bg">
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
+    <!-- City aerial video — place city.mp4 in root of repo -->
+    <video autoplay muted loop playsinline
+      style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0"
+      onerror="this.style.display='none'">
+      <source src="/city.mp4" type="video/mp4">
+    </video>
+    <!-- Dark overlay so text stays crisp -->
+    <div style="position:absolute;inset:0;z-index:1;background:linear-gradient(160deg,rgba(10,10,10,.72) 0%,rgba(10,10,10,.55) 50%,rgba(13,148,136,.25) 100%)"></div>
+    <!-- Fallback animated orbs if no video -->
+    <div class="orb orb-1" style="z-index:0"></div>
+    <div class="orb orb-2" style="z-index:0"></div>
   </div>
   <div class="hero-content">
     <div class="hero-tag">
